@@ -17,13 +17,16 @@ st.title('Gatenavn til geo-koordinat')
 
 # Display instructions
 st.write("""
-Denne appen lar deg laste opp en Excel-fil med gateadresser. Programmet bruker GeoNorges Swagger API for å parse gateadresser, og returnerer en Excel-fil med kommaseparerte geo-koordinater for bredde- og lengdegrad.
+Denne appen lar deg utvinne geo-koordinater fra norske gateadresser, basert på data fra Kartverket.
 
-Excel-arket bør bare inneholde én kolonne (A). Adressen bør angis på formatet {gatenavn nr.} ({by/kommune}). F.eks. **Berberisveien 1 (Stavanger)**.
+Du trenger en Excel-fil med gateadresser. Disse bør angis på formatet `{gatenavn nr.} ({by/kommune})`, f.eks. **Berberisveien 1 (Stavanger)**.,
 
-Etter endt operasjon kan du laste ned en Excel-fil med koordinater for hver adresse.
+Excel-arket må bare ha verdier i én kolonne (A), og du behøver ikke angi kolonnenavn i rad 1.
 
+Etter opplastning vil appen utvinne geo-koordinater og returnere kommaseparerte geo-koordinater for bredde- og lengdegrad.
 Det kan ta noe tid for appen å fullføre operasjonen.
+
+Du kan da også laste ned en ny Excel-fil der koordinatene finnes i to nye kolonner.
 """)
 
 # File uploader widget
@@ -31,7 +34,7 @@ uploaded_file = st.file_uploader("Velg en Excel-fil", type=['xlsx'])
 
 if uploaded_file is not None:
     # Display message indicating that geocoding is in progress
-    st.info('Geokoding pågår...')
+    st.info('Geokoding startet.')
     
     df = pd.read_excel(uploaded_file, header=None, names=['gateadresse'])
 
