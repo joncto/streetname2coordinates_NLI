@@ -8,7 +8,6 @@ Created on Mon Feb 26 14:34:16 2024
 
 # Importere pakker
 import requests
-!pip install pandas
 import pandas as pd
 
 
