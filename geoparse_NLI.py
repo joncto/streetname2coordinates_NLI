@@ -63,7 +63,7 @@ if uploaded_file is not None:
     output.seek(0)
 
     # Download link
-    st.download_button(label="Download Excel",
+    st.download_button(label="Last ned Excel-fil",
                        data=output,
                        file_name="output.xlsx",
                        mime="application/vnd.ms-excel")
