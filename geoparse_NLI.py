@@ -15,6 +15,17 @@ from io import BytesIO
 # Setup Streamlit layout
 st.title('Gatenavn til geo-koordinat')
 
+# Display instructions
+st.write("""
+Denne appen lar deg laste opp en Excel-fil med gateadresser. Programmet bruker GeoNorges Swagger API for å parse gateadresser, og returnerer en Excel-fil med kommaseparerte geo-koordinater for bredde- og lengdegrad.
+
+Excel-arket bør bare inneholde én kolonne (A). Adressen bør angis på formatet {gatenavn nr.} ({by/kommune}). F.eks. **Berberisveien 1 (Stavanger)**.
+
+Etter endt operasjon kan du laste ned en Excel-fil med koordinater for hver adresse.
+
+Det kan ta noe tid for appen å fullføre operasjonen.
+""")
+
 # File uploader widget
 uploaded_file = st.file_uploader("Choose an Excel file", type=['xlsx'])
 
