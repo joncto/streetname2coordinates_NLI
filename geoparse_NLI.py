@@ -27,9 +27,12 @@ Det kan ta noe tid for appen å fullføre operasjonen.
 """)
 
 # File uploader widget
-uploaded_file = st.file_uploader("Choose an Excel file", type=['xlsx'])
+uploaded_file = st.file_uploader("Velg en Excel-fil", type=['xlsx'])
 
 if uploaded_file is not None:
+    # Display message indicating that geocoding is in progress
+    st.info('Geokoding pågår...')
+    
     df = pd.read_excel(uploaded_file, header=None, names=['gateadresse'])
 
     def get_geocoordinates(adresse):
@@ -70,4 +73,4 @@ if uploaded_file is not None:
 
 # Instructions
 else:
-    st.write("Please upload an Excel file to begin.")
+    st.write("Vennligst last opp en Excel-fil for å begynne.")
