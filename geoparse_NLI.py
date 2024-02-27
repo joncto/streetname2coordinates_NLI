@@ -9,6 +9,7 @@ Created on Mon Feb 26 14:34:16 2024
 import streamlit as st
 import pandas as pd
 import requests
+pip install openpyxl
 import openpyxl
 from io import BytesIO
 
