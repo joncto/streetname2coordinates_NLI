@@ -40,7 +40,8 @@ if uploaded_file is not None:
     df = pd.read_excel(uploaded_file, header=None, names=['gateadresse'])
     
     try:
-        locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')ArithmeticError
+        locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')
+
     except locale.Error:
         locale.setlocale(locale.LC_ALL, 'en_US')
 
