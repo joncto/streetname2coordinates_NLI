@@ -11,6 +11,7 @@ import pandas as pd
 import requests
 import openpyxl
 from io import BytesIO
+import locale
 
 # Setup Streamlit layout
 st.title('Gatenavn til geo-koordinat')
@@ -37,6 +38,11 @@ if uploaded_file is not None:
     st.info('Geokoding startet.')
     
     df = pd.read_excel(uploaded_file, header=None, names=['gateadresse'])
+    
+    try:
+        locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')ArithmeticError
+    except locale.Error:
+        locale.setlocale(locale.LC_ALL, 'en_US')
 
     def get_geocoordinates(adresse):
         base_url = "https://ws.geonorge.no/adresser/v1/sok"
@@ -49,9 +55,14 @@ if uploaded_file is not None:
         data = response.json()
 
         try:
-            lat = data['adresser'][0]['representasjonspunkt']['lat']
-            lon = data['adresser'][0]['representasjonspunkt']['lon']
-            return lat, lon
+            lat = float(data['adresser'][0]['representasjonspunkt']['lat'])
+            lon = float(['adresser'][0]['representasjonspunkt']['lon'])
+            
+            # Format the lat and lon to only have 6 decimal places
+            lat_formatted = f"{lat:.6f}"
+            lon_formatted = f"{lon:.6f}"
+        
+            return lat_formatted, lon_formatted
         except (IndexError, KeyError):
             return None, None
 
