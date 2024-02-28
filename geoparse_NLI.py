@@ -51,7 +51,7 @@ if uploaded_file is not None:
 
         try:
             lat = float(data['adresser'][0]['representasjonspunkt']['lat'])
-            lon = float(['adresser'][0]['representasjonspunkt']['lon'])
+            lon = float(data['adresser'][0]['representasjonspunkt']['lon'])
             
             # Format the lat and lon to only have 6 decimal places
             lat_formatted = f"{lat:.6f}"
