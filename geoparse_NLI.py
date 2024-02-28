@@ -38,12 +38,6 @@ if uploaded_file is not None:
     st.info('Geokoding startet.')
     
     df = pd.read_excel(uploaded_file, header=None, names=['gateadresse'])
-    
-    try:
-        locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')
-
-    except locale.Error:
-        locale.setlocale(locale.LC_ALL, 'en_US')
 
     def get_geocoordinates(adresse):
         base_url = "https://ws.geonorge.no/adresser/v1/sok"
